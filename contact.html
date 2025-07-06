@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - German Excellence</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">German Excellence</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#courses" class="nav-link">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+                <h1>Get in Touch</h1>
+                <p>Ready to start your German learning journey? Contact us today for a free consultation and personalized learning plan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" min="5" max="100">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="currentLevel">Current German Level</label>
+                            <select id="currentLevel" name="currentLevel">
+                                <option value="">Select your level</option>
+                                <option value="Complete Beginner">Complete Beginner (A0)</option>
+                                <option value="Beginner">Beginner (A1-A2)</option>
+                                <option value="Intermediate">Intermediate (B1-B2)</option>
+                                <option value="Advanced">Advanced (C1-C2)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="learningGoal">Learning Goal</label>
+                            <select id="learningGoal" name="learningGoal">
+                                <option value="">Select your goal</option>
+                                <option value="Personal Interest">Personal Interest</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Work/Business">Work/Business</option>
+                                <option value="Academic Studies">Academic Studies</option>
+                                <option value="Immigration">Immigration</option>
+                                <option value="Exam Preparation">Exam Preparation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferredTime">Preferred Learning Time</label>
+                            <select id="preferredTime" name="preferredTime">
+                                <option value="">Select preferred time</option>
+                                <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+                                <option value="Afternoon (12 PM - 5 PM)">Afternoon (12 PM - 5 PM)</option>
+                                <option value="Evening (5 PM - 9 PM)">Evening (5 PM - 9 PM)</option>
+                                <option value="Weekends">Weekends</option>
+                                <option value="Flexible">Flexible</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferredMode">Preferred Learning Mode</label>
+                            <select id="preferredMode" name="preferredMode">
+                                <option value="">Select preferred mode</option>
+                                <option value="Online">Online (Video Call)</option>
+                                <option value="In-Person">In-Person</option>
+                                <option value="Hybrid">Hybrid (Both)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Additional Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your learning goals, any specific requirements, or questions you might have..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for German learning tips and updates
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                            <p>Available: Mon-Fri 9 AM - 6 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@germanexcellence.com</p>
+                            <p>We respond within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Your City, State 12345</p>
+                            <p>In-person lessons available locally</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Office Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p>Saturday: 10:00 AM - 4:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links-contact">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How long does it take to learn German?</h3>
+                    <p>The time varies depending on your starting level and goals. Beginners typically see conversational progress in 3-6 months, while reaching fluency can take 1-2 years with consistent practice.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Do you offer online lessons?</h3>
+                    <p>Yes! We offer both online and in-person lessons. Online lessons are conducted via video call and include all the same materials and personalized attention as in-person sessions.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What materials are included?</h3>
+                    <p>All students receive access to textbooks, workbooks, audio materials, and online resources. We also provide practice exercises and cultural content to enhance your learning experience.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I get a free trial lesson?</h3>
+                    <p>Absolutely! We offer a free 30-minute consultation to assess your current level, discuss your goals, and answer any questions you might have about our teaching approach.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Do you prepare students for exams?</h3>
+                    <p>Yes, we offer specialized preparation for various German language exams including TestDaF, DSH, Goethe-Zertifikat, and others. Our success rate is excellent!</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What is your cancellation policy?</h3>
+                    <p>We require 24 hours notice for lesson cancellations. Lessons cancelled with less notice may be charged at full rate. We're flexible and will work with you for genuine emergencies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>German Excellence</h3>
+                    <p>Professional German tuition for all levels. Learn from an experienced native speaker.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#courses">Courses</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@germanexcellence.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Your City, State 12345</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 German Excellence. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html> 
