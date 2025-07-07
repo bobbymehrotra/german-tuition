@@ -51,139 +51,22 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <!-- Contact Form -->
-                <div class="contact-form-container">
-                    <h2>Send Us a Message</h2>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-group">
-                            <label for="fullName">Full Name *</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="age">Age</label>
-                            <input type="number" id="age" name="age" min="5" max="100">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="currentLevel">Current German Level</label>
-                            <select id="currentLevel" name="currentLevel">
-                                <option value="">Select your level</option>
-                                <option value="Complete Beginner">Complete Beginner (A0)</option>
-                                <option value="Beginner">Beginner (A1-A2)</option>
-                                <option value="Intermediate">Intermediate (B1-B2)</option>
-                                <option value="Advanced">Advanced (C1-C2)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="learningGoal">Learning Goal</label>
-                            <select id="learningGoal" name="learningGoal">
-                                <option value="">Select your goal</option>
-                                <option value="Personal Interest">Personal Interest</option>
-                                <option value="Travel">Travel</option>
-                                <option value="Work/Business">Work/Business</option>
-                                <option value="Academic Studies">Academic Studies</option>
-                                <option value="Immigration">Immigration</option>
-                                <option value="Exam Preparation">Exam Preparation</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="preferredTime">Preferred Learning Time</label>
-                            <select id="preferredTime" name="preferredTime">
-                                <option value="">Select preferred time</option>
-                                <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
-                                <option value="Afternoon (12 PM - 5 PM)">Afternoon (12 PM - 5 PM)</option>
-                                <option value="Evening (5 PM - 9 PM)">Evening (5 PM - 9 PM)</option>
-                                <option value="Weekends">Weekends</option>
-                                <option value="Flexible">Flexible</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="preferredMode">Preferred Learning Mode</label>
-                            <select id="preferredMode" name="preferredMode">
-                                <option value="">Select preferred mode</option>
-                                <option value="Online">Online (Video Call)</option>
-                                <option value="In-Person">In-Person</option>
-                                <option value="Hybrid">Hybrid (Both)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Additional Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your learning goals, any specific requirements, or questions you might have..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h2>Contact Information</h2>
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+91 9810397634</p>
-                            <p>Available: Mon-Fri 9 AM - 6 PM</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>bobbyusd@gmail.com</p>
-                            <p>We respond within 24 hours</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Delhi, India</p>
-                            <!-- <p>In-person lessons available locally</p> -->
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Office Hours</h3>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                            <p>Saturday & Sunday: 10:00 AM - 4:00 PM</p>
-                        </div>
-                    </div>
-
-                    <div class="social-links-contact">
-                        <h3>Follow Us</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="contact" class="contact-section">
+        <h2>Start Your German Journey</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="tel" placeholder="Your Phone" required>
+            <select>
+                <option>Learning Goal</option>
+                <option>School Tuition</option>
+                <option>Exam Prep (A1–B2)</option>
+                <option>Other</option>
+            </select>
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send Enquiry</button>
+        </form>
+        <a href="https://wa.me/919810397634?text=Hi%20Bobby%2C%20I%20am%20interested%20in%20German%20tuition" class="btn btn-whatsapp">Chat on WhatsApp</a>
     </section>
 
     <!-- FAQ Section -->
