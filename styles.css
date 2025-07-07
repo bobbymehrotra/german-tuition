@@ -380,17 +380,67 @@ body {
 }
 
 .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-direction: row;
     gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
 }
 
 .testimonial-card {
+    min-width: 350px;
+    flex: 0 0 350px;
+    scroll-snap-align: start;
     background: white;
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+}
+
+/* Optional: Hide scrollbar for a cleaner look */
+.testimonials-grid::-webkit-scrollbar {
+    height: 8px;
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+.testimonials-grid::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+.testimonials-grid {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f1f1f1;
+}
+
+/* Add a fade effect at the edges for scroll cue */
+.testimonials {
+    position: relative;
+}
+.testimonials::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to left, #fff 80%, transparent 100%);
+    z-index: 2;
+}
+.testimonials::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, #fff 80%, transparent 100%);
+    z-index: 2;
 }
 
 .testimonial-content {
