@@ -108,7 +108,7 @@ async function handleFormSubmission(e) {
     // Merge countryCode + phone into a single value for Google Sheets
     // (the sheet has no countryCode column; countryCode is just for front-end UX)
     if (formObject.countryCode && formObject.phone) {
-        formObject.phone = formObject.countryCode + ' ' + formObject.phone;
+        formObject.phone = formObject.countryCode.replace('+', '') + ' ' + formObject.phone;
     }
     delete formObject.countryCode;
 
