@@ -18,6 +18,20 @@ const GOOGLE_SHEETS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzNJhe
 const WHATSAPP_NUMBER = '919810397634';
 // ===========================================================================
 
+// Per-country digit counts for phone number validation
+const COUNTRY_DIGITS = {
+    '+91': 10,  // India
+    '+1':  10,  // US / Canada
+    '+44': 10,  // UK
+    '+49': 11,  // Germany
+    '+971': 9,  // UAE
+    '+65':  8,  // Singapore
+    '+61':  9,  // Australia
+    '+33':  9,  // France
+    '+81': 10,  // Japan
+    '+7':  10,  // Russia
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -28,7 +42,60 @@ document.addEventListener('DOMContentLoaded', () => {
     if (whatsappBtn) {
         whatsappBtn.addEventListener('click', sendViaWhatsApp);
     }
+
+    initPhoneInput();
 });
+
+/**
+ * Phone input initialiser.
+ * - Restricts input to digits only (fixes backspace "snap-back" caused by browser
+ *   autofill re-injecting a stored value after non-numeric input is detected).
+ * - Enforces the correct max-length for the selected country code.
+ * - Updates the placeholder and maxlength whenever the country changes.
+ */
+function initPhoneInput() {
+    const countrySelect = document.getElementById('countryCode');
+    const phoneInput    = document.getElementById('phone');
+    if (!countrySelect || !phoneInput) return;
+
+    function getMaxDigits() {
+        return COUNTRY_DIGITS[countrySelect.value] || 15;
+    }
+
+    function applyMaxLength() {
+        const max = getMaxDigits();
+        phoneInput.setAttribute('maxlength', max);
+        phoneInput.setAttribute('placeholder', `${max}-digit number`);
+    }
+
+    // When country changes, update limit and trim any excess digits already typed
+    countrySelect.addEventListener('change', () => {
+        applyMaxLength();
+        const max = getMaxDigits();
+        if (phoneInput.value.length > max) {
+            phoneInput.value = phoneInput.value.slice(0, max);
+        }
+    });
+
+    // On every input event: strip non-digits and enforce max length.
+    // This is the key fix — by explicitly setting value to digits-only we prevent
+    // browser autofill / autocomplete from restoring an old value after backspace.
+    phoneInput.addEventListener('input', () => {
+        const max    = getMaxDigits();
+        const digits = phoneInput.value.replace(/\D/g, '').slice(0, max);
+        if (phoneInput.value !== digits) {
+            // Preserve cursor position when we rewrite the value
+            const selStart = phoneInput.selectionStart;
+            const diff     = phoneInput.value.length - digits.length;
+            phoneInput.value = digits;
+            try {
+                phoneInput.setSelectionRange(selStart - diff, selStart - diff);
+            } catch (_) { /* ignore on older browsers */ }
+        }
+    });
+
+    applyMaxLength();
+}
 
 // Form submission handler
 async function handleFormSubmission(e) {
@@ -115,7 +182,10 @@ function sendViaWhatsApp(e) {
         const lines = [];
         if (data.fullName) lines.push(`Name: ${data.fullName}`);
         if (data.email) lines.push(`Email: ${data.email}`);
-        if (data.phone) lines.push(`Phone: ${data.phone}`);
+        if (data.phone) {
+            const cc = data.countryCode || '+91';
+            lines.push(`Phone: ${cc} ${data.phone}`);
+        }
         if (data.currentLevel) lines.push(`Current Level: ${data.currentLevel}`);
         if (data.targetLevel) lines.push(`Target Exam: ${data.targetLevel}`);
         if (data.timeline) lines.push(`Timeline: ${data.timeline}`);
@@ -157,8 +227,13 @@ function validateForm(data) {
         errors.push('Please enter a valid email address');
     }
 
-    if (data.phone && data.phone.replace(/\D/g, '').length < 10) {
-        errors.push('Please enter a valid phone number');
+    if (data.phone) {
+        const digits      = data.phone.replace(/\D/g, '');
+        const countryCode = data.countryCode || '+91';
+        const required    = COUNTRY_DIGITS[countryCode] || 10;
+        if (digits.length !== required) {
+            errors.push(`Phone number must be exactly ${required} digits for ${countryCode}`);
+        }
     }
 
     if (errors.length > 0) {
