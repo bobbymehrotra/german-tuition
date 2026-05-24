@@ -197,16 +197,25 @@ body {
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
 }
 
 .about-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width: 168px;
+    height: 210px;
+    max-width: none;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 10px;
+    border: 4px solid #fff;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .about-text h3 {
@@ -251,9 +260,22 @@ body {
     margin: 0;
 }
 
+.section-subtitle {
+    text-align: center;
+    font-size: 1.15rem;
+    color: #6b7280;
+    margin: -2rem auto 2.5rem;
+    max-width: 640px;
+}
+
 /* Courses Section */
 .courses {
     padding: 80px 0;
+}
+
+.courses-featured {
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 .courses-grid {
@@ -269,6 +291,67 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e5e7eb;
+    position: relative;
+}
+
+.course-card--featured {
+    border: 2px solid #2563eb;
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.18);
+    background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+}
+
+.course-badge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: #2563eb;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+}
+
+.course-cta {
+    margin-top: 0.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.school-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 720px;
+    margin: 2rem auto 0;
+    padding: 1.25rem 1.5rem;
+    background: #f1f5f9;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+}
+
+.school-note i {
+    color: #2563eb;
+    font-size: 1.4rem;
+    margin-top: 0.15rem;
+}
+
+.school-note p {
+    margin: 0;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.school-note a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.school-note a:hover {
+    text-decoration: underline;
 }
 
 .course-card:hover {
@@ -374,108 +457,193 @@ body {
     color: #6b7280;
 }
 
-/* Testimonials Section */
-.testimonials {
+/* Google Reviews Section */
+.google-reviews {
     padding: 80px 0;
+    background: #f8fafc;
 }
 
-.testimonials-grid {
+.google-reviews .section-title {
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.google-reviews-header {
     display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1rem;
-}
-
-.testimonial-card {
-    min-width: 350px;
-    flex: 0 0 350px;
-    scroll-snap-align: start;
-    background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
-    margin-bottom: 1rem;
-}
-
-/* Optional: Hide scrollbar for a cleaner look */
-.testimonials-grid::-webkit-scrollbar {
-    height: 8px;
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-.testimonials-grid::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 4px;
-}
-.testimonials-grid {
-    scrollbar-width: thin;
-    scrollbar-color: #d1d5db #f1f1f1;
-}
-
-/* Add a fade effect at the edges for scroll cue */
-.testimonials {
-    position: relative;
-}
-.testimonials::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 60px;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(to left, #fff 80%, transparent 100%);
-    z-index: 2;
-}
-.testimonials::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 60px;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(to right, #fff 80%, transparent 100%);
-    z-index: 2;
-}
-
-.testimonial-content {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-.testimonial-content p {
-    font-style: italic;
+.google-reviews-header .section-subtitle {
+    text-align: left;
+    margin: 0;
+}
+
+.google-rating-summary {
+    text-align: right;
+}
+
+.google-stars {
+    color: #f59e0b;
+    font-size: 1.25rem;
+    letter-spacing: 0.1rem;
+}
+
+.google-stars .star-muted {
+    color: #d1d5db;
+}
+
+.google-rating-text {
+    margin-top: 0.35rem;
     color: #6b7280;
-    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.google-reviews-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.google-reviews-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.google-btn-outline {
+    background: white;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+}
+
+.google-btn-outline:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.google-reviews-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.google-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.google-review-card {
+    background: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.google-review-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.google-review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.google-review-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.2rem;
+}
+
+.google-review-stars {
+    color: #f59e0b;
+    font-size: 0.8rem;
+}
+
+.google-review-time {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.google-review-badge {
+    margin-left: auto;
+    color: #4285f4;
+    font-size: 1.25rem;
+}
+
+.google-review-card p {
+    color: #4b5563;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.google-review-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.google-review-link:hover {
+    text-decoration: underline;
+}
+
+.google-reviews-empty {
+    background: white;
+    border: 1px dashed #cbd5e1;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.google-reviews-empty i {
+    font-size: 2.5rem;
+    color: #4285f4;
+    margin-bottom: 1rem;
+}
+
+.google-reviews-empty p {
+    color: #6b7280;
+    margin-bottom: 1.25rem;
     line-height: 1.6;
 }
 
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.google-map-wrap {
+    min-height: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.testimonial-author img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.testimonial-author h4 {
-    font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 0.25rem;
-}
-
-.testimonial-author span {
-    color: #6b7280;
-    font-size: 0.9rem;
+.google-map-wrap iframe {
+    display: block;
+    min-height: 320px;
 }
 
 /* CTA Section */
@@ -803,6 +971,43 @@ body {
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
+        justify-items: center;
+    }
+
+    .about-image img {
+        width: 150px;
+        height: 188px;
+    }
+
+    .google-reviews-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .google-rating-summary {
+        text-align: left;
+    }
+
+    .google-reviews .section-title {
+        text-align: center;
+        width: 100%;
+    }
+
+    .google-reviews-header .section-subtitle {
+        text-align: center;
+        width: 100%;
+    }
+
+    .google-reviews-actions {
+        justify-content: center;
+    }
+
+    .google-reviews-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .google-reviews-list {
+        max-height: none;
     }
 
     .contact-grid {
@@ -811,7 +1016,6 @@ body {
 
     .courses-grid,
     .features-grid,
-    .testimonials-grid,
     .faq-grid {
         grid-template-columns: 1fr;
     }
