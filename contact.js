@@ -38,10 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', handleFormSubmission);
     }
 
-    const whatsappBtn = document.getElementById('whatsappFormBtn');
-    if (whatsappBtn) {
-        whatsappBtn.addEventListener('click', sendViaWhatsApp);
-    }
+    // WhatsApp button is now a plain <a> tag above the form — no JS needed
 
     initPhoneInput();
 });
@@ -107,6 +104,13 @@ async function handleFormSubmission(e) {
     if (!validateForm(formObject)) {
         return;
     }
+
+    // Merge countryCode + phone into a single value for Google Sheets
+    // (the sheet has no countryCode column; countryCode is just for front-end UX)
+    if (formObject.countryCode && formObject.phone) {
+        formObject.phone = formObject.countryCode + ' ' + formObject.phone;
+    }
+    delete formObject.countryCode;
 
     const submitButton = e.target.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;

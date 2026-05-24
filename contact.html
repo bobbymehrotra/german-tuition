@@ -8,6 +8,13 @@
     <meta name="keywords" content="German classes contact, Goethe exam coach India, telc A1 A2 B1 B2 prep, online German tuition Delhi, BoloGerman">
     <link rel="canonical" href="https://bologerman.com/contact.html">
 
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
     <!-- Open Graph (WhatsApp / Facebook / LinkedIn share preview) -->
     <meta property="og:title" content="Contact BoloGerman — Online German Exam Coaching">
     <meta property="og:description" content="Goethe / telc A1, A2, B1, B2 exam prep with Bobby Mehrotra. Small online batches, mock tests, 10+ years teaching experience.">
@@ -72,8 +79,16 @@
     <section class="contact-hero">
         <div class="container">
             <div class="contact-hero-content">
-                <h1>Get in Touch</h1>
-                <p>Ready to start your German learning journey? Contact us today for a free consultation and personalized learning plan.</p>
+                <span class="hero-lang-tag">Hallo! 👋</span>
+                <h1>Let's Start Your<br>German Journey</h1>
+                <p>Fill in the short form below — Bobby reads every enquiry personally and replies within a few hours.</p>
+                <div class="hero-trust-strip">
+                    <span>⭐ 5.0 Google Rating</span>
+                    <span class="strip-divider">·</span>
+                    <span>10+ Years Teaching</span>
+                    <span class="strip-divider">·</span>
+                    <span>Free First Consultation</span>
+                </div>
             </div>
         </div>
     </section>
@@ -81,23 +96,48 @@
     <!-- Contact Section -->
     <section class="contact-section">
         <div class="container">
+
+            <!-- WhatsApp primary CTA — independent of the form -->
+            <div class="wa-cta-bar">
+                <div class="wa-cta-bar-left">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>Fastest way to reach Bobby</strong>
+                        <span>No form needed — just tap and say hi</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/919810397634?text=Hi%20Bobby%2C%20I%27m%20interested%20in%20your%20German%20classes."
+                   class="btn btn-whatsapp"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   onclick="if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'contact',event_label:'cta_bar'});}">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+
+            <div class="or-divider">
+                <span>or send a message and Bobby will reply by email</span>
+            </div>
+
             <div class="contact-grid">
                 <!-- Contact Form -->
                 <div class="contact-form-container">
-                    <h2>Send Us a Message</h2>
+                    <h2>Send a Message</h2>
+                    <p class="form-intro">Prefer email? Fill this in and Bobby will get back within 24 hours.</p>
                     <form id="contactForm" class="contact-form">
-                        <div class="form-group">
-                            <label for="fullName">Full Name *</label>
-                            <input type="text" id="fullName" name="fullName" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="you@example.com">
+                            </div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
+                            <label for="phone">Phone / WhatsApp *</label>
                             <div class="phone-input-group">
                                 <select id="countryCode" name="countryCode" aria-label="Country code">
                                     <option value="+91" data-digits="10">🇮🇳 +91</option>
@@ -118,29 +158,11 @@
                                     maxlength="10">
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="age">Age</label>
-                            <input type="number" id="age" name="age" min="5" max="100">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="currentLevel">Current German Level</label>
-                            <select id="currentLevel" name="currentLevel">
-                                <option value="">Select your current level</option>
-                                <option value="A0">A0 — Complete beginner (no German yet)</option>
-                                <option value="A1">A1 — Just started / basics</option>
-                                <option value="A2">A2 — Can handle everyday situations</option>
-                                <option value="B1">B1 — Intermediate / conversational</option>
-                                <option value="B2">B2 — Upper-intermediate</option>
-                                <option value="Not sure">Not sure — please assess me</option>
-                            </select>
-                        </div>
 
                         <div class="form-group">
-                            <label for="targetLevel">Target Exam Level *</label>
+                            <label for="targetLevel">Which exam are you preparing for? *</label>
                             <select id="targetLevel" name="targetLevel" required>
-                                <option value="">Which exam are you preparing for?</option>
+                                <option value="">Select exam level</option>
                                 <option value="A1">A1 (Goethe / telc)</option>
                                 <option value="A2">A2 (Goethe / telc)</option>
                                 <option value="B1">B1 (Goethe / telc)</option>
@@ -151,109 +173,82 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="timeline">When do you want to take the exam?</label>
-                            <select id="timeline" name="timeline">
-                                <option value="">Select your timeline</option>
-                                <option value="Within 3 months">Within 3 months</option>
-                                <option value="3-6 months">3–6 months</option>
-                                <option value="6-12 months">6–12 months</option>
-                                <option value="Just exploring">Just exploring for now</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
                             <label for="learningGoal">Why are you learning German?</label>
                             <select id="learningGoal" name="learningGoal">
-                                <option value="">Select your goal</option>
+                                <option value="">Select your goal (optional)</option>
                                 <option value="Study in Germany (Bachelor/Master)">Study in Germany (Bachelor / Master)</option>
                                 <option value="Ausbildung">Ausbildung (vocational training in Germany)</option>
                                 <option value="Job in Germany">Job in Germany</option>
                                 <option value="Au Pair">Au Pair</option>
-                                <option value="Family / Spouse Visa">Family / Spouse visa (Familienzusammenführung)</option>
+                                <option value="Family / Spouse Visa">Family / Spouse visa</option>
                                 <option value="School curriculum">School curriculum (Class 6–10)</option>
                                 <option value="Personal Interest">Personal interest</option>
                                 <option value="Travel">Travel</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="preferredTime">Preferred Learning Time</label>
-                            <select id="preferredTime" name="preferredTime">
-                                <option value="">Select preferred time</option>
-                                <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
-                                <option value="Afternoon (12 PM - 5 PM)">Afternoon (12 PM - 5 PM)</option>
-                                <option value="Evening (5 PM - 9 PM)">Evening (5 PM - 9 PM)</option>
-                                <option value="Weekends">Weekends</option>
-                                <option value="Flexible">Flexible</option>
-                            </select>
+                            <label for="message">Anything else you'd like Bobby to know?</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Current level, timeline, specific questions… anything helps!"></textarea>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="preferredMode">Preferred Learning Mode</label>
-                            <select id="preferredMode" name="preferredMode">
-                                <option value="">Select preferred mode</option>
-                                <option value="Online">Online (Video Call)</option>
-                                <option value="In-Person">In-Person</option>
-                                <option value="Hybrid">Hybrid (Both)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Additional Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your learning goals, any specific requirements, or questions you might have..."></textarea>
-                        </div>
-                        
+
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                            <button type="button" id="whatsappFormBtn" class="btn btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i> Or chat on WhatsApp
-                            </button>
+                            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
                         </div>
-                        <p class="form-helper">Prefer instant chat? The WhatsApp button pre-fills your details so you don't have to retype them.</p>
+                        <p class="form-helper">Bobby reads every message personally and replies within 24 hours.</p>
                     </form>
                 </div>
 
                 <!-- Contact Information -->
                 <div class="contact-info">
-                    <h2>Contact Information</h2>
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+91 9810397634</p>
-                            <p>Available: Mon-Fri 9 AM - 6 PM</p>
+                    <!-- Tutor personal card -->
+                    <div class="tutor-card">
+                        <img src="images/tutor.jpg" alt="Bobby Mehrotra" class="tutor-thumb">
+                        <div class="tutor-card-text">
+                            <strong>Bobby Mehrotra</strong>
+                            <span>MBA from Germany · 10+ yrs teaching</span>
                         </div>
                     </div>
-                    
+                    <blockquote class="tutor-quote">
+                        "I personally read every enquiry and reply within a few hours. Looking forward to helping you on your German journey!"
+                    </blockquote>
+
+                    <div class="contact-divider"></div>
+
+                    <div class="contact-info-item">
+                        <i class="fab fa-whatsapp" style="color:#25d366"></i>
+                        <div>
+                            <h3>WhatsApp (fastest)</h3>
+                            <a href="https://wa.me/919810397634" class="contact-link" target="_blank" rel="noopener noreferrer">+91 98103 97634</a>
+                        </div>
+                    </div>
+
                     <div class="contact-info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>Email</h3>
-                            <p>bobbyusd@gmail.com</p>
-                            <p>We respond within 24 hours</p>
+                            <a href="mailto:bobbyusd@gmail.com" class="contact-link">bobbyusd@gmail.com</a>
                         </div>
                     </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Delhi, India</p>
-                            <!-- <p>In-person lessons available locally</p> -->
-                        </div>
-                    </div>
-                    
+
                     <div class="contact-info-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <h3>Office Hours</h3>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                            <p>Saturday & Sunday: 10:00 AM - 4:00 PM</p>
+                            <h3>Available</h3>
+                            <p>Mon–Fri: 9 AM – 6 PM</p>
+                            <p>Sat–Sun: 10 AM – 4 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Based in</h3>
+                            <p>Delhi, India — teaches online across India &amp; abroad</p>
                         </div>
                     </div>
 
                     <div class="social-links-contact">
-                        <h3>Reach Us</h3>
                         <div class="social-icons">
                             <a href="https://wa.me/919810397634" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             <a href="https://maps.app.goo.gl/zCTNLH9FUfzd3zof8" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Google Business"><i class="fab fa-google"></i></a>
