@@ -116,20 +116,34 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
-        // Phone number formatting
+        // Phone number formatting (Indian format: +91 98765 43210)
         if (input.type === 'tel') {
             input.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 0) {
-                    if (value.length <= 3) {
-                        value = `(${value}`;
-                    } else if (value.length <= 6) {
-                        value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                // Strip everything except digits and a leading +
+                let raw = e.target.value.replace(/[^\d+]/g, '');
+                let hasPlus = raw.startsWith('+');
+                let digits = raw.replace(/\D/g, '');
+
+                // If user typed 10 digits without country code, treat as Indian and prepend 91
+                let prefix = '';
+                let rest = digits;
+                if (hasPlus || digits.length > 10) {
+                    // Country code present
+                    if (digits.startsWith('91') && digits.length > 10) {
+                        prefix = '+91';
+                        rest = digits.slice(2);
                     } else {
-                        value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                        prefix = '+' + digits.slice(0, digits.length - 10);
+                        rest = digits.slice(-10);
                     }
                 }
-                e.target.value = value;
+
+                let formatted = prefix;
+                if (rest.length > 0) {
+                    formatted += (prefix ? ' ' : '') + rest.slice(0, 5);
+                    if (rest.length > 5) formatted += ' ' + rest.slice(5, 10);
+                }
+                e.target.value = formatted.trim();
             });
         }
     });

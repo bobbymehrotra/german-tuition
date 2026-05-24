@@ -5,7 +5,7 @@
  * To show reviews on the site, add entries to google-reviews.json
  * (copy text from your Google Business Profile).
  */
-const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/5BZKs6qd9RHL9gxo8';
+const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/zCTNLH9FUfzd3zof8';
 
 function renderStars(rating) {
     const full = Math.round(rating);

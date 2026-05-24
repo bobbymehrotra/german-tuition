@@ -3,10 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - German Excellence</title>
+    <title>Contact BoloGerman — Goethe / telc A1 A2 B1 B2 Exam Coaching</title>
+    <meta name="description" content="Get in touch with Bobby Mehrotra for online Goethe and telc German exam coaching (A1, A2, B1, B2). Small batches, mock tests, MBA from Germany, 10+ years teaching. Based in Delhi.">
+    <meta name="keywords" content="German classes contact, Goethe exam coach India, telc A1 A2 B1 B2 prep, online German tuition Delhi, BoloGerman">
+    <link rel="canonical" href="https://bologerman.com/contact.html">
+
+    <!-- Open Graph (WhatsApp / Facebook / LinkedIn share preview) -->
+    <meta property="og:title" content="Contact BoloGerman — Online German Exam Coaching">
+    <meta property="og:description" content="Goethe / telc A1, A2, B1, B2 exam prep with Bobby Mehrotra. Small online batches, mock tests, 10+ years teaching experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bologerman.com/contact.html">
+    <meta property="og:image" content="https://bologerman.com/images/tutor.jpg">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact BoloGerman — Online German Exam Coaching">
+    <meta name="twitter:description" content="Goethe / telc A1, A2, B1, B2 exam prep with Bobby Mehrotra. Small online batches, mock tests.">
+
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-17BCGZF9PG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-17BCGZF9PG', {
+            page_title: document.title,
+            page_path: location.pathname
+        });
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -81,24 +109,52 @@
                         <div class="form-group">
                             <label for="currentLevel">Current German Level</label>
                             <select id="currentLevel" name="currentLevel">
-                                <option value="">Select your level</option>
-                                <option value="Complete Beginner">Complete Beginner (A0)</option>
-                                <option value="Beginner">Beginner (A1-A2)</option>
-                                <option value="Intermediate">Intermediate (B1-B2)</option>
-                                <option value="Advanced">Advanced (C1-C2)</option>
+                                <option value="">Select your current level</option>
+                                <option value="A0">A0 — Complete beginner (no German yet)</option>
+                                <option value="A1">A1 — Just started / basics</option>
+                                <option value="A2">A2 — Can handle everyday situations</option>
+                                <option value="B1">B1 — Intermediate / conversational</option>
+                                <option value="B2">B2 — Upper-intermediate</option>
+                                <option value="Not sure">Not sure — please assess me</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="learningGoal">Learning Goal</label>
+                            <label for="targetLevel">Target Exam Level *</label>
+                            <select id="targetLevel" name="targetLevel" required>
+                                <option value="">Which exam are you preparing for?</option>
+                                <option value="A1">A1 (Goethe / telc)</option>
+                                <option value="A2">A2 (Goethe / telc)</option>
+                                <option value="B1">B1 (Goethe / telc)</option>
+                                <option value="B2">B2 (Goethe / telc)</option>
+                                <option value="School (Class 6-10)">School German (Class 6–10)</option>
+                                <option value="Not decided">Not sure yet — need guidance</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeline">When do you want to take the exam?</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Select your timeline</option>
+                                <option value="Within 3 months">Within 3 months</option>
+                                <option value="3-6 months">3–6 months</option>
+                                <option value="6-12 months">6–12 months</option>
+                                <option value="Just exploring">Just exploring for now</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="learningGoal">Why are you learning German?</label>
                             <select id="learningGoal" name="learningGoal">
                                 <option value="">Select your goal</option>
-                                <option value="Personal Interest">Personal Interest</option>
+                                <option value="Study in Germany (Bachelor/Master)">Study in Germany (Bachelor / Master)</option>
+                                <option value="Ausbildung">Ausbildung (vocational training in Germany)</option>
+                                <option value="Job in Germany">Job in Germany</option>
+                                <option value="Au Pair">Au Pair</option>
+                                <option value="Family / Spouse Visa">Family / Spouse visa (Familienzusammenführung)</option>
+                                <option value="School curriculum">School curriculum (Class 6–10)</option>
+                                <option value="Personal Interest">Personal interest</option>
                                 <option value="Travel">Travel</option>
-                                <option value="Work/Business">Work/Business</option>
-                                <option value="Academic Studies">Academic Studies</option>
-                                <option value="Immigration">Immigration</option>
-                                <option value="Exam Preparation">Exam Preparation</option>
                             </select>
                         </div>
                         
@@ -129,7 +185,13 @@
                             <textarea id="message" name="message" rows="4" placeholder="Tell us more about your learning goals, any specific requirements, or questions you might have..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <button type="button" id="whatsappFormBtn" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> Or chat on WhatsApp
+                            </button>
+                        </div>
+                        <p class="form-helper">Prefer instant chat? The WhatsApp button pre-fills your details so you don't have to retype them.</p>
                     </form>
                 </div>
 
@@ -173,12 +235,12 @@
                     </div>
 
                     <div class="social-links-contact">
-                        <h3>Follow Us</h3>
+                        <h3>Reach Us</h3>
                         <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="https://wa.me/919810397634" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://maps.app.goo.gl/zCTNLH9FUfzd3zof8" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Google Business"><i class="fab fa-google"></i></a>
+                            <a href="mailto:bobbyusd@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+919810397634" class="social-icon" aria-label="Call"><i class="fas fa-phone"></i></a>
                         </div>
                     </div>
                 </div>
@@ -220,11 +282,11 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>BoloGerman</h3>
-                    <p>Professional German tuition for all levels. Learn from an experienced native speaker.</p>
+                    <p>Online Goethe / telc A1–B2 exam coaching, plus school German tuition. Run by Bobby Mehrotra — MBA from Germany, 10+ years of teaching.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/919810397634" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://maps.app.goo.gl/zCTNLH9FUfzd3zof8" target="_blank" rel="noopener noreferrer" aria-label="Google Business"><i class="fab fa-google"></i></a>
+                        <a href="mailto:bobbyusd@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -250,6 +312,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp button -->
+    <a href="https://wa.me/919810397634?text=Hi%20Bobby%2C%20I%27m%20interested%20in%20your%20German%20classes."
+       class="whatsapp-float"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat with us on WhatsApp"
+       onclick="if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'contact',event_label:'floating_bubble'});}">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="script.js"></script>
     <script src="contact.js"></script>

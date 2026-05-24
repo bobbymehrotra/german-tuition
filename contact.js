@@ -1,124 +1,204 @@
-// Contact Form Handling
+/**
+ * Contact form handling for BoloGerman
+ *
+ * Two routes are supported:
+ *   1. "Send Message"  -> POSTs to a Google Apps Script web app that appends a row in Google Sheets.
+ *   2. "Send via WhatsApp" -> opens WhatsApp with the form data pre-filled as a chat message.
+ *
+ * To enable Google Sheets storage, paste the deployed Apps Script web app URL into
+ * GOOGLE_SHEETS_WEBAPP_URL below. Until that's filled in, submissions are logged to
+ * the browser console as a fallback so the form still feels responsive.
+ */
+
+// === CONFIG =================================================================
+// Deployed Google Apps Script web app — appends form submissions to Google Sheets.
+const GOOGLE_SHEETS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzNJheJRBvtvhLVcX4HF1oKt9YI9KL2i6JaD8HZcRt0V5PDzri2b6rda0ParoHCnnTv/exec';
+
+// WhatsApp number in international format (country code + number, no '+' or spaces)
+const WHATSAPP_NUMBER = '919810397634';
+// ===========================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
-    
     if (contactForm) {
         contactForm.addEventListener('submit', handleFormSubmission);
+    }
+
+    const whatsappBtn = document.getElementById('whatsappFormBtn');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', sendViaWhatsApp);
     }
 });
 
 // Form submission handler
 async function handleFormSubmission(e) {
     e.preventDefault();
-    
-    // Get form data
+
     const formData = new FormData(e.target);
     const formObject = Object.fromEntries(formData);
-    
-    // Validate required fields
+
     if (!validateForm(formObject)) {
         return;
     }
-    
-    // Show loading state
+
     const submitButton = e.target.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
-    
+
     try {
-        // For now, we'll simulate the submission
-        // In production, this would connect to Google Sheets
-        await simulateFormSubmission(formObject);
-        
-        // Show success message
-        showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
-        
-        // Reset form
+        if (GOOGLE_SHEETS_WEBAPP_URL) {
+            await submitToGoogleSheets(formObject);
+        } else {
+            await simulateFormSubmission(formObject);
+        }
+
+        // Track successful lead in Google Analytics 4
+        if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+                event_category: 'contact_form',
+                event_label: formObject.learningGoal || 'unspecified',
+                level: formObject.currentLevel || 'unspecified',
+                target_level: formObject.targetLevel || 'unspecified'
+            });
+        }
+
+        showNotification(
+            "Thank you! Your message has been received. Bobby will get back to you within 24 hours. " +
+            "For a faster response, you can also message on WhatsApp.",
+            'success'
+        );
+
         e.target.reset();
-        
+        localStorage.removeItem('contactFormData');
     } catch (error) {
         console.error('Form submission error:', error);
-        showNotification('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+        showNotification(
+            "We couldn't submit your message right now. Please try WhatsApp or call +91 98103 97634.",
+            'error'
+        );
     } finally {
-        // Reset button state
         submitButton.textContent = originalText;
         submitButton.disabled = false;
     }
+}
+
+// Send the form to Google Sheets via the deployed Apps Script web app.
+// Uses URL-encoded body + mode:'no-cors' so the request doesn't trigger a CORS preflight.
+// Trade-off: we can't read the response, so we assume success if the network call doesn't throw.
+async function submitToGoogleSheets(data) {
+    const body = new URLSearchParams();
+    body.append('timestamp', new Date().toISOString());
+    body.append('source', 'website_contact_form');
+    Object.keys(data).forEach(key => {
+        body.append(key, data[key] ?? '');
+    });
+
+    await fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body
+    });
+    return true;
+}
+
+// Open WhatsApp with the form data pre-filled. If the form is empty,
+// just opens a generic chat — useful as a quick contact option.
+function sendViaWhatsApp(e) {
+    if (e) e.preventDefault();
+
+    const form = document.getElementById('contactForm');
+    let message = "Hi Bobby, I'm interested in your German classes.";
+
+    if (form) {
+        const data = Object.fromEntries(new FormData(form));
+        const lines = [];
+        if (data.fullName) lines.push(`Name: ${data.fullName}`);
+        if (data.email) lines.push(`Email: ${data.email}`);
+        if (data.phone) lines.push(`Phone: ${data.phone}`);
+        if (data.currentLevel) lines.push(`Current Level: ${data.currentLevel}`);
+        if (data.targetLevel) lines.push(`Target Exam: ${data.targetLevel}`);
+        if (data.timeline) lines.push(`Timeline: ${data.timeline}`);
+        if (data.learningGoal) lines.push(`Goal: ${data.learningGoal}`);
+        if (data.preferredTime) lines.push(`Preferred Time: ${data.preferredTime}`);
+        if (data.preferredMode) lines.push(`Mode: ${data.preferredMode}`);
+        if (data.message) lines.push(`\nMessage: ${data.message}`);
+
+        if (lines.length > 0) {
+            message = "Hi Bobby, I'm interested in your German classes.\n\n" + lines.join('\n');
+        }
+    }
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'whatsapp_click', {
+            event_category: 'contact',
+            event_label: 'contact_form_page'
+        });
+    }
+
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 // Form validation
 function validateForm(data) {
     const requiredFields = ['fullName', 'email', 'phone'];
     const errors = [];
-    
-    // Check required fields
+
     requiredFields.forEach(field => {
         if (!data[field] || data[field].trim() === '') {
-            errors.push(`${field.charAt(0).toUpperCase() + field.slice(1)} is required`);
+            const labels = { fullName: 'Full Name', email: 'Email', phone: 'Phone' };
+            errors.push(`${labels[field]} is required`);
         }
     });
-    
-    // Validate email format
+
     if (data.email && !isValidEmail(data.email)) {
         errors.push('Please enter a valid email address');
     }
-    
-    // Validate phone number (basic validation)
+
     if (data.phone && data.phone.replace(/\D/g, '').length < 10) {
         errors.push('Please enter a valid phone number');
     }
-    
+
     if (errors.length > 0) {
         showNotification(errors.join('\n'), 'error');
         return false;
     }
-    
+
     return true;
 }
 
-// Email validation
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-// Simulate form submission (replace with actual Google Sheets integration)
+// Fallback used until GOOGLE_SHEETS_WEBAPP_URL is configured
 async function simulateFormSubmission(data) {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Log the data (in production, this would be sent to Google Sheets)
-    console.log('Form data to be sent to Google Sheets:', {
-        timestamp: new Date().toISOString(),
-        ...data
-    });
-    
-    // For actual Google Sheets integration, you would use:
-    // 1. Google Apps Script as a web app
-    // 2. Or a service like Formspree, Netlify Forms, etc.
-    // 3. Or a custom backend API
-    
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    console.warn(
+        '[BoloGerman] Form submitted but GOOGLE_SHEETS_WEBAPP_URL is not configured. ' +
+        'Data was NOT saved to Google Sheets. See contact.js for setup instructions.'
+    );
+    console.log('Form data:', { timestamp: new Date().toISOString(), ...data });
     return true;
 }
 
 // Notification system
 function showNotification(message, type = 'info') {
-    // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => notification.remove());
-    
-    // Create notification element
+    existingNotifications.forEach(n => n.remove());
+
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
         <div class="notification-content">
             <span class="notification-message">${message}</span>
-            <button class="notification-close">&times;</button>
+            <button class="notification-close" aria-label="Close">&times;</button>
         </div>
     `;
-    
-    // Add styles
+
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -131,159 +211,79 @@ function showNotification(message, type = 'info') {
         z-index: 10000;
         max-width: 400px;
         animation: slideIn 0.3s ease;
+        white-space: pre-line;
     `;
-    
-    // Add animation styles
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
+
+    if (!document.getElementById('notification-keyframes')) {
+        const style = document.createElement('style');
+        style.id = 'notification-keyframes';
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
             }
-            to {
-                transform: translateX(0);
-                opacity: 1;
+            .notification-content {
+                display: flex; align-items: flex-start;
+                justify-content: space-between; gap: 1rem;
             }
-        }
-        .notification-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-        .notification-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0;
-            line-height: 1;
-        }
-        .notification-close:hover {
-            opacity: 0.8;
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Add to page
+            .notification-close {
+                background: none; border: none; color: white;
+                font-size: 1.5rem; cursor: pointer; padding: 0; line-height: 1;
+            }
+            .notification-close:hover { opacity: 0.8; }
+        `;
+        document.head.appendChild(style);
+    }
+
     document.body.appendChild(notification);
-    
-    // Close button functionality
-    const closeButton = notification.querySelector('.notification-close');
-    closeButton.addEventListener('click', () => {
+
+    notification.querySelector('.notification-close').addEventListener('click', () => {
         notification.remove();
     });
-    
-    // Auto-remove after 5 seconds
+
     setTimeout(() => {
-        if (notification.parentNode) {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }
-    }, 5000);
+        if (notification.parentNode) notification.remove();
+    }, 7000);
 }
 
-// Google Sheets Integration Setup (for future implementation)
-function setupGoogleSheetsIntegration() {
-    // This function would be implemented when you're ready to connect to Google Sheets
-    // You'll need to:
-    // 1. Create a Google Apps Script
-    // 2. Deploy it as a web app
-    // 3. Replace simulateFormSubmission with actual API call
-    
-    const GOOGLE_SHEETS_WEBAPP_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL';
-    
-    async function submitToGoogleSheets(data) {
-        try {
-            const response = await fetch(GOOGLE_SHEETS_WEBAPP_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
-            
-            if (!response.ok) {
-                throw new Error('Failed to submit form');
-            }
-            
-            return await response.json();
-        } catch (error) {
-            throw new Error('Network error: ' + error.message);
-        }
-    }
-    
-    return submitToGoogleSheets;
-}
-
-// Form enhancement features
+// Auto-save form data + character counter
 document.addEventListener('DOMContentLoaded', () => {
-    // Auto-save form data to localStorage
     const form = document.getElementById('contactForm');
     if (form) {
-        // Load saved data
         const savedData = localStorage.getItem('contactFormData');
         if (savedData) {
-            const data = JSON.parse(savedData);
-            Object.keys(data).forEach(key => {
-                const field = form.querySelector(`[name="${key}"]`);
-                if (field) {
-                    field.value = data[key];
-                }
-            });
+            try {
+                const data = JSON.parse(savedData);
+                Object.keys(data).forEach(key => {
+                    const field = form.querySelector(`[name="${key}"]`);
+                    if (field) field.value = data[key];
+                });
+            } catch (e) { /* ignore corrupted localStorage */ }
         }
-        
-        // Save data on input
-        form.addEventListener('input', (e) => {
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+
+        form.addEventListener('input', () => {
+            const data = Object.fromEntries(new FormData(form));
             localStorage.setItem('contactFormData', JSON.stringify(data));
         });
-        
-        // Clear saved data on successful submission
-        form.addEventListener('submit', () => {
-            localStorage.removeItem('contactFormData');
-        });
     }
-    
-    // Character counter for message field
+
     const messageField = document.getElementById('message');
     if (messageField) {
         const counter = document.createElement('div');
         counter.className = 'char-counter';
         counter.style.cssText = `
-            font-size: 0.8rem;
-            color: #6b7280;
-            text-align: right;
-            margin-top: 0.25rem;
+            font-size: 0.8rem; color: #6b7280;
+            text-align: right; margin-top: 0.25rem;
         `;
         messageField.parentNode.appendChild(counter);
-        
+
+        const maxLength = 1000;
         function updateCounter() {
             const count = messageField.value.length;
-            const maxLength = 1000; // Set your desired max length
             counter.textContent = `${count}/${maxLength} characters`;
-            
-            if (count > maxLength * 0.9) {
-                counter.style.color = '#ef4444';
-            } else {
-                counter.style.color = '#6b7280';
-            }
+            counter.style.color = count > maxLength * 0.9 ? '#ef4444' : '#6b7280';
         }
-        
         messageField.addEventListener('input', updateCounter);
-        updateCounter(); // Initial count
+        updateCounter();
     }
 });
-
-// Export for potential module usage
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        handleFormSubmission,
-        validateForm,
-        isValidEmail,
-        showNotification
-    };
-} 

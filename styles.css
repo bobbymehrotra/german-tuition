@@ -1113,4 +1113,226 @@ body {
     .contact-info {
         padding: 1.5rem;
     }
-} 
+}
+
+/* =========================================================
+   Floating WhatsApp bubble (all pages)
+   ========================================================= */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 24px;
+    right: 24px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+    line-height: 60px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.55);
+    color: #fff;
+}
+
+.whatsapp-float::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+    animation: whatsapp-pulse 2.2s infinite;
+}
+
+@keyframes whatsapp-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* =========================================================
+   WhatsApp button on contact form + helper
+   ========================================================= */
+.btn-whatsapp {
+    background: #25d366;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.btn-whatsapp:hover {
+    background: #1ebd5b;
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+.btn-whatsapp i {
+    font-size: 1.2rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.form-helper {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 0.75rem;
+    font-style: italic;
+}
+
+/* =========================================================
+   "Which level do I need?" section
+   ========================================================= */
+.level-finder {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+}
+
+.level-finder .section-subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 3rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.level-finder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.level-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid #2563eb;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+}
+
+.level-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+}
+
+.level-card--featured {
+    border-top-color: #f59e0b;
+    background: linear-gradient(180deg, #fffbeb 0%, #ffffff 60%);
+}
+
+.level-card--featured::before {
+    content: 'Most popular';
+    position: absolute;
+    top: -12px;
+    right: 16px;
+    background: #f59e0b;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.level-badge {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1rem;
+    background: #2563eb;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 8px;
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.level-card--featured .level-badge {
+    background: #f59e0b;
+}
+
+.level-card h3 {
+    font-size: 1.2rem;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.level-card p {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 0.6rem;
+}
+
+.level-card p strong {
+    color: #111827;
+}
+
+.level-meta {
+    font-size: 0.82rem !important;
+    color: #6b7280 !important;
+    border-top: 1px dashed #e5e7eb;
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0 !important;
+}
+
+.level-finder-cta {
+    text-align: center;
+}
+
+.level-finder-cta p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        font-size: 28px;
+        line-height: 54px;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .level-finder-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,5 +1,54 @@
 {
-  "rating": null,
-  "reviewCount": null,
-  "reviews": []
+  "rating": 5.0,
+  "reviewCount": 13,
+  "reviews": [
+    {
+      "author": "Tushanu G",
+      "rating": 5,
+      "time": "10 months ago",
+      "text": "Awesome teacher. I discovered the classes in 9th mid-term and just saw improvement. Not only did my marks get better but I could build confidence in the previous concepts which I was confused about. In 10th boards he helped me get 100%, and I also cleared B1 with strong marks."
+    },
+    {
+      "author": "Aqdas Farooque",
+      "rating": 5,
+      "time": "3 months ago",
+      "text": "Learning German with sir has been a great experience. We did numerous worksheets for every chapter, which kept the learning interactive. The extra effort he put into providing practice sets for our Half-Yearly and Final exams really helped me score better and understand the material deeply. His guidance has been invaluable."
+    },
+    {
+      "author": "Neha Nawal",
+      "rating": 5,
+      "time": "3 months ago",
+      "text": "Sir is very professional and helps with all our doubts whenever we ask. He has 3-4 worksheets for every topic and has made me improve significantly. Highly recommend taking classes from him."
+    },
+    {
+      "author": "Nidhi Saxena",
+      "rating": 5,
+      "time": "3 months ago",
+      "text": "Sir teaches very well. He teaches in an interactive and fun way. Sir also gives us enough practice for weekly tests and exams — plenty of sample papers and worksheets."
+    },
+    {
+      "author": "Monika Kumar",
+      "rating": 5,
+      "time": "3 months ago",
+      "text": "It was a very good experience learning German from Bobby sir. I am very proud of sir for making me learn German. The worksheets are very helpful for scoring higher. Thank you so much for your guidance."
+    },
+    {
+      "author": "Prachi Gupta",
+      "rating": 5,
+      "time": "a year ago",
+      "text": "A very professional teacher — joins the classes before time and is always ready to answer students' queries. He has made learning a language an absolute joy. His expertise and patience create a very supportive environment. I highly recommend him."
+    },
+    {
+      "author": "Manpreet Khurana",
+      "rating": 5,
+      "time": "a year ago",
+      "text": "German class offers an exceptionally interactive learning experience with a focus on personalized, one-on-one attention. The lessons suit individual learning paces, ensuring thorough understanding. The class structure keeps students engaged with real-world applications of the language."
+    },
+    {
+      "author": "Puja Chopra",
+      "rating": 5,
+      "time": "2 years ago",
+      "text": "In 6th grade, I didn't enjoy German, but everything changed when I met Bobby sir. He completely transformed my perspective on German. Thanks to him, I started enjoying the language, solving questions with ease, and feeling confident."
+    }
+  ]
 }
