@@ -1,0 +1,312 @@
+/* =========================================================
+   BoloGerman — Course Detail Page Styles
+   Supplements styles.css (load after it)
+   ========================================================= */
+
+/* Breadcrumb */
+.breadcrumb-wrap {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 0;
+    margin-top: 70px; /* clear fixed navbar */
+}
+.breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 0;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 0.82rem;
+    flex-wrap: wrap;
+}
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    color: #6b7280;
+}
+.breadcrumb li:not(:last-child)::after {
+    content: '/';
+    margin: 0 8px;
+    color: #d1d5db;
+}
+.breadcrumb a {
+    color: #2563eb;
+    text-decoration: none;
+}
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb li:last-child { color: #6b7280; }
+
+/* Level switcher bar */
+.level-switcher {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+}
+.level-switcher-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+}
+.level-switch-link {
+    padding: 12px 22px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+.level-switch-link:hover { color: #2563eb; border-bottom-color: #bfdbfe; }
+.level-switch-link.current {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+    font-weight: 600;
+}
+
+/* Course page hero — reuses .hero, just tightens padding */
+.course-page-hero { padding: 50px 0 55px; }
+.course-level-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+}
+.course-popular-badge {
+    display: inline-block;
+    background: #fbbf24;
+    color: #78350f;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+.course-hours-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.28);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.88rem;
+    padding: 6px 18px;
+    border-radius: 999px;
+    margin: 0.6rem 0 1.6rem;
+}
+
+/* Use-case section */
+.use-case-section { padding: 48px 0 0; }
+.use-case-banner {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+}
+.use-case-banner h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.use-case-banner p { color: #1d4ed8; font-size: 0.92rem; line-height: 1.6; }
+.use-case-banner ul {
+    margin: 8px 0 0 16px;
+    color: #1d4ed8;
+    font-size: 0.92rem;
+    line-height: 1.8;
+}
+
+/* Exam skills section */
+.exam-skills-section {
+    padding: 52px 0;
+    background: #f9fafb;
+}
+.exam-skills-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.8rem;
+}
+.skill-chip {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: white;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 11px 22px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1f2937;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.skill-chip:hover {
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.12);
+}
+.skill-chip i { color: #2563eb; font-size: 1.1rem; }
+
+/* Journey / timeline section */
+.journey-section {
+    padding: 60px 0;
+    background: #fdf8f2;
+}
+.journey-timeline {
+    max-width: 680px;
+    margin: 2rem auto 0;
+}
+.journey-step {
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+}
+.journey-step:last-child { padding-bottom: 0; }
+.journey-step-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 16px;
+}
+.journey-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #2563eb;
+    border: 2.5px solid #bfdbfe;
+    flex-shrink: 0;
+}
+.journey-line {
+    width: 2px;
+    flex: 1;
+    background: #bfdbfe;
+    min-height: 28px;
+    margin-top: 5px;
+}
+.journey-step:last-child .journey-line { display: none; }
+.journey-step-content { padding-top: 0; }
+.journey-step-content h4 {
+    color: #1e40af;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.journey-step-content p { color: #4b5563; font-size: 0.9rem; line-height: 1.55; }
+
+/* FAQ section */
+.faq-section { padding: 60px 0; }
+.faq-list {
+    max-width: 780px;
+    margin: 2rem auto 0;
+}
+.faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+.faq-item:hover { border-color: #93c5fd; }
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 17px 20px;
+    text-align: left;
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.15s;
+}
+.faq-question:hover { background: #f9fafb; }
+.faq-question .faq-icon { color: #2563eb; font-size: 1.1rem; transition: transform 0.25s ease; flex-shrink: 0; }
+.faq-question.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 20px;
+    color: #4b5563;
+    font-size: 0.93rem;
+    line-height: 1.7;
+}
+.faq-answer.open {
+    max-height: 300px;
+    padding: 0 20px 18px;
+}
+
+/* Other courses strip */
+.other-courses-strip {
+    background: #f8fafc;
+    border-top: 1px solid #e5e7eb;
+    padding: 44px 0;
+}
+.other-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+    margin-top: 1.6rem;
+}
+.other-course-card {
+    background: white;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px 18px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: block;
+}
+.other-course-card:hover {
+    border-color: #2563eb;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(37,99,235,0.1);
+}
+.other-course-card .level-tag {
+    display: inline-block;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+.other-course-card h4 { font-size: 0.88rem; font-weight: 600; color: #1f2937; margin-bottom: 4px; }
+.other-course-card p { font-size: 0.78rem; color: #6b7280; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .course-page-hero { padding: 40px 0 45px; }
+    .level-switcher-inner { white-space: nowrap; -webkit-overflow-scrolling: touch; }
+    .exam-skills-row { justify-content: flex-start; }
+    .breadcrumb-wrap { margin-top: 64px; }
+    .journey-step { gap: 1rem; }
+}

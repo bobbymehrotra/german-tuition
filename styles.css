@@ -1617,6 +1617,17 @@ body {
     margin-bottom: 0 !important;
 }
 
+.level-card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.level-card-link:hover { color: #1d4ed8; text-decoration: underline; }
+
 .level-finder-cta {
     text-align: center;
 }
