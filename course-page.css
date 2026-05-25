@@ -266,11 +266,17 @@
     border-top: 1px solid #e5e7eb;
     padding: 44px 0;
 }
+.other-courses-strip .section-title {
+    margin-bottom: 1rem !important;
+}
+.other-courses-strip .section-subtitle {
+    margin: 0 auto 3rem !important;
+}
 .other-courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     gap: 14px;
-    margin-top: 1.6rem;
+    margin-top: 0;
 }
 .other-course-card {
     background: white;
