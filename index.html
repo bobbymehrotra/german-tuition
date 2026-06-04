@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoloGerman — Goethe / telc A1 A2 B1 B2 German Exam Coaching Online</title>
-    <meta name="description" content="Online Goethe and telc German exam coaching for A1, A2, B1, and B2 with Bobby Mehrotra. MBA from Germany, 10+ years of teaching, small batches, mock tests. Based in Delhi, taught online across India.">
+    <meta name="description" content="Online Goethe and telc German exam coaching for A1, A2, B1, and B2 with Bobby Mehrotra. MBA from Germany, 10+ years teaching, small batches, mock tests. Book your free 15-min assessment today.">
     <meta name="keywords" content="Goethe A1 coaching, Goethe B1 online India, telc B2 prep, German exam coaching Delhi, A1 A2 B1 B2 German, learn German online India, German tutor for Ausbildung, German for Germany visa">
     <link rel="canonical" href="https://bologerman.com/">
 
@@ -28,39 +28,187 @@
     <meta name="twitter:title" content="BoloGerman — Online German Exam Coaching">
     <meta name="twitter:description" content="Goethe / telc A1, A2, B1, B2 exam prep with Bobby Mehrotra. Small online batches, mock tests.">
 
-    <!-- LocalBusiness structured data for Google -->
+    <!-- Structured data — EducationalOrganization + LocalBusiness + Person + Courses -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
-        "name": "BoloGerman (Bobi's German Classes)",
-        "url": "https://bologerman.com",
-        "image": "https://bologerman.com/images/tutor.jpg",
-        "description": "Online Goethe and telc German exam coaching for A1, A2, B1, and B2. Run by Bobby Mehrotra, MBA from Germany with 10+ years of teaching experience.",
-        "telephone": "+91-9810397634",
-        "email": "bobbyusd@gmail.com",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Delhi",
-            "addressCountry": "IN"
-        },
-        "founder": {
-            "@type": "Person",
-            "name": "Bobby Mehrotra"
-        },
-        "sameAs": [
-            "https://maps.app.goo.gl/zCTNLH9FUfzd3zof8"
-        ],
-        "offers": {
-            "@type": "OfferCatalog",
-            "name": "German Exam Preparation Courses",
-            "itemListElement": [
-                { "@type": "Course", "name": "Goethe / telc A1 German Exam Preparation", "provider": { "@type": "Organization", "name": "BoloGerman" } },
-                { "@type": "Course", "name": "Goethe / telc A2 German Exam Preparation", "provider": { "@type": "Organization", "name": "BoloGerman" } },
-                { "@type": "Course", "name": "Goethe / telc B1 German Exam Preparation", "provider": { "@type": "Organization", "name": "BoloGerman" } },
-                { "@type": "Course", "name": "Goethe / telc B2 German Exam Preparation", "provider": { "@type": "Organization", "name": "BoloGerman" } }
-            ]
-        }
+        "@graph": [
+            {
+                "@type": ["EducationalOrganization", "LocalBusiness"],
+                "@id": "https://bologerman.com/#organization",
+                "name": "BoloGerman (Bobi's German Classes)",
+                "url": "https://bologerman.com",
+                "image": "https://bologerman.com/images/tutor.jpg",
+                "description": "Online Goethe and telc German exam coaching for A1, A2, B1, and B2. Run by Bobby Mehrotra, MBA from Germany with 10+ years of teaching experience. Small online batches, mock tests, WhatsApp support.",
+                "telephone": "+91-9810397634",
+                "email": "bobbyusd@gmail.com",
+                "priceRange": "$$",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Delhi",
+                    "addressRegion": "Delhi NCR",
+                    "addressCountry": "IN"
+                },
+                "areaServed": [
+                    { "@type": "Country", "name": "India" }
+                ],
+                "founder": { "@id": "https://bologerman.com/#bobby" },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5.0",
+                    "reviewCount": "39",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "sameAs": [
+                    "https://maps.app.goo.gl/zCTNLH9FUfzd3zof8"
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://bologerman.com/#bobby",
+                "name": "Bobby Mehrotra",
+                "jobTitle": "German Language Tutor & Exam Coach",
+                "description": "MBA from a German university, 10+ years of German language teaching, focused on Goethe and telc A1–B2 exam preparation.",
+                "worksFor": { "@id": "https://bologerman.com/#organization" },
+                "knowsLanguage": ["German", "English", "Hindi"],
+                "image": "https://bologerman.com/images/tutor.jpg"
+            },
+            {
+                "@type": "Course",
+                "name": "Goethe / telc A1 German Exam Preparation",
+                "description": "Online A1 German exam coaching covering all four sections: Lesen, Hören, Schreiben, Sprechen. Small batches, mock tests, and personalised feedback.",
+                "url": "https://bologerman.com/courses/a1-german-exam-prep/",
+                "provider": { "@id": "https://bologerman.com/#organization" },
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "online",
+                    "instructor": { "@id": "https://bologerman.com/#bobby" },
+                    "courseWorkload": "PT2H30M"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "INR",
+                    "url": "https://bologerman.com/contact.html"
+                }
+            },
+            {
+                "@type": "Course",
+                "name": "Goethe / telc A2 German Exam Preparation",
+                "description": "Online A2 German exam coaching. Build on A1 foundations and prepare for the A2 Goethe or telc exam with structured lessons and mock tests.",
+                "url": "https://bologerman.com/courses/a2-german-exam-prep/",
+                "provider": { "@id": "https://bologerman.com/#organization" },
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "online",
+                    "instructor": { "@id": "https://bologerman.com/#bobby" },
+                    "courseWorkload": "PT2H30M"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "INR",
+                    "url": "https://bologerman.com/contact.html"
+                }
+            },
+            {
+                "@type": "Course",
+                "name": "Goethe / telc B1 German Exam Preparation",
+                "description": "Online B1 German exam coaching for Ausbildung, Germany job seeker visa, and citizenship applications. The most in-demand level — small batches, full mock exams.",
+                "url": "https://bologerman.com/courses/b1-german-exam-prep/",
+                "provider": { "@id": "https://bologerman.com/#organization" },
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "online",
+                    "instructor": { "@id": "https://bologerman.com/#bobby" },
+                    "courseWorkload": "PT2H30M"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "INR",
+                    "url": "https://bologerman.com/contact.html"
+                }
+            },
+            {
+                "@type": "Course",
+                "name": "Goethe / telc B2 German Exam Preparation",
+                "description": "Online B2 German exam coaching for university admission, skilled-worker visa (healthcare, IT, engineering), and professional proficiency. Advanced level with intensive speaking and writing practice.",
+                "url": "https://bologerman.com/courses/b2-german-exam-prep/",
+                "provider": { "@id": "https://bologerman.com/#organization" },
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "online",
+                    "instructor": { "@id": "https://bologerman.com/#bobby" },
+                    "courseWorkload": "PT2H30M"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "INR",
+                    "url": "https://bologerman.com/contact.html"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- FAQPage structured data — enables featured snippets and AI citations -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Which German level do I need for Ausbildung?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most Ausbildung programmes in Germany require B1 German (Goethe or telc). Some programmes accept A2, especially in care and hospitality sectors. We recommend confirming the exact requirement with your employer or placement consultancy, then booking a free assessment to choose the right course."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between Goethe and telc German exams?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Both Goethe-Institut and telc are globally recognised German language certifications accepted for visas and Ausbildung. Goethe exams are run by the Goethe-Institut and are accepted at all German embassies. telc exams are offered at more centres across India, often with more frequent exam dates. The language level tested (A1, A2, B1, B2) is identical — our coaching prepares you for both."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to pass the Goethe B1 exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Starting from scratch, B1 typically requires 350–400 hours of study — around 4–6 months with regular classes and self-study. With BoloGerman's exam-targeted coaching, structured mock tests, and WhatsApp doubt support, most students are exam-ready within that timeframe. The exact duration depends on your current level and how many hours per week you can commit."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are BoloGerman classes online or in person?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All BoloGerman classes are conducted fully online via video call, in small groups. This means students across India — Delhi, Mumbai, Bangalore, Hyderabad, Pune, and beyond — can join the same batch. Sessions are interactive with speaking practice, not pre-recorded videos."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I start German from zero with BoloGerman?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. The A1 course is designed for complete beginners — no prior knowledge of German is needed. We start from the very basics: alphabet, pronunciation, greetings, and simple grammar, then build up to exam-level reading, writing, listening, and speaking over 2–3 months."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does the BoloGerman course fee include?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The course fee covers all live online classes, exam-format worksheets and practice sets, full mock exam papers with detailed feedback, and WhatsApp doubt support (Mon–Sat). Contact us via the enquiry form or WhatsApp for current batch schedules and fee details."
+                }
+            }
+        ]
     }
     </script>
 
@@ -173,7 +321,10 @@
             <h2 class="section-title">Meet Your German Tutor</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="images/tutor.jpg" alt="Bobby Mehrotra, German Tutor">
+                    <picture>
+                        <source srcset="images/tutor.webp" type="image/webp">
+                        <img src="images/tutor.jpg" alt="Bobby Mehrotra, German Tutor" loading="lazy" width="400" height="400">
+                    </picture>
                 </div>
                 <div class="about-text">
                     <h3>Hi, I'm Bobby Mehrotra</h3>
@@ -210,8 +361,8 @@
     <!-- Courses Section -->
     <section id="courses" class="courses">
         <div class="container">
-            <h2 class="section-title">Level Exam Preparation</h2>
-            <p class="section-subtitle">Our main programme — Goethe / telc style A1, A2, B1, and B2 exam coaching</p>
+            <h2 class="section-title">Goethe / telc A1–B2 German Exam Coaching Online</h2>
+            <p class="section-subtitle">Our main programme — exam-targeted A1, A2, B1, and B2 coaching for Ausbildung, visa, and university applications</p>
             <div class="courses-featured">
                 <div class="course-card course-card--featured">
                     <div class="course-card-top">
