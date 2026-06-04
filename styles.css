@@ -1692,3 +1692,98 @@ body {
         font-size: 5rem;
     }
 }
+
+/* ── Blog Preview Section (homepage) ─────────────────────── */
+.blog-preview {
+    padding: 70px 0;
+    background: #f8fafc;
+    border-top: 1px solid #e5e7eb;
+}
+.blog-preview-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.blog-preview-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 0.4rem 0;
+    text-align: left;
+}
+.blog-preview-desc {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+    text-align: left;
+}
+.blog-preview-all {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.blog-preview-all:hover { text-decoration: underline; }
+.blog-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+.blog-preview-card {
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 24px 22px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.blog-preview-card:hover {
+    border-color: #2563eb;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+}
+.blog-preview-tag {
+    display: inline-block;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-self: flex-start;
+}
+.blog-preview-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.4;
+    margin: 0;
+}
+.blog-preview-card p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.6;
+    flex: 1;
+    margin: 0;
+}
+.blog-preview-read {
+    font-size: 0.83rem;
+    color: #2563eb;
+    font-weight: 600;
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .blog-preview-header { align-items: flex-start; }
+    .blog-preview-grid { grid-template-columns: 1fr; }
+}

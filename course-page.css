@@ -308,6 +308,101 @@
 .other-course-card h4 { font-size: 0.88rem; font-weight: 600; color: #1f2937; margin-bottom: 4px; }
 .other-course-card p { font-size: 0.78rem; color: #6b7280; }
 
+/* Exam detail section */
+.exam-detail-section { padding: 60px 0; background: #f9fafb; }
+.exam-format-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-top: 2rem;
+}
+.exam-format-card {
+    background: white;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 22px 20px;
+}
+.exam-format-card h3 {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.exam-format-card h3 i { color: #2563eb; }
+.exam-format-card p { font-size: 0.88rem; color: #4b5563; line-height: 1.6; }
+.exam-format-note {
+    margin-top: 1.4rem;
+    font-size: 0.88rem;
+    color: #6b7280;
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Register section */
+.register-section { padding: 60px 0; }
+.register-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 780px;
+    margin: 1.6rem auto 0;
+}
+.register-step {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+.register-step:last-child { border-bottom: none; }
+.step-num {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+.register-step h4 { font-size: 0.95rem; font-weight: 600; color: #1f2937; margin-bottom: 4px; }
+.register-step p { font-size: 0.88rem; color: #4b5563; line-height: 1.6; }
+
+/* Mistakes section */
+.mistakes-section { padding: 60px 0; background: #fffbeb; }
+.mistakes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 2rem;
+}
+.mistake-card {
+    background: white;
+    border: 1.5px solid #fde68a;
+    border-radius: 12px;
+    padding: 20px;
+}
+.mistake-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.mistake-card h4 i { color: #d97706; font-size: 0.85rem; }
+.mistake-card p { font-size: 0.86rem; color: #4b5563; line-height: 1.6; }
+
 /* Mobile */
 @media (max-width: 768px) {
     .course-page-hero { padding: 40px 0 45px; }
