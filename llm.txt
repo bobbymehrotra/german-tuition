@@ -42,7 +42,7 @@ Curriculum-based German support for school students in classes 6–10, covering 
 ## Key Pages
 
 - Home: https://bologerman.com/
-- Contact & Enquiry: https://bologerman.com/contact.html
+- Contact & Enquiry: https://bologerman.com/contact/
 
 ## Contact
 
