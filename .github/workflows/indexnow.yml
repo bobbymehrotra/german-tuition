@@ -1,0 +1,38 @@
+name: Notify IndexNow
+
+# Pings IndexNow (api.indexnow.org) whenever the site is updated on main.
+# IndexNow propagates to Bing, which also feeds ChatGPT search, Copilot,
+# and DuckDuckGo — see CLAUDE.md "Connected data" section.
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          KEY="0aad0f2ac35b793bbc2efd587d2c0810"
+          HOST="bologerman.com"
+          KEY_LOCATION="https://${HOST}/${KEY}.txt"
+
+          # Pull every <loc> URL from the sitemap and build a JSON array.
+          URLS=$(grep -oP '(?<=<loc>)[^<]+' sitemap.xml | sed 's/.*/"&"/' | paste -sd, -)
+
+          echo "Submitting URLs to IndexNow:"
+          echo "$URLS"
+
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{
+              \"host\": \"${HOST}\",
+              \"key\": \"${KEY}\",
+              \"keyLocation\": \"${KEY_LOCATION}\",
+              \"urlList\": [${URLS}]
+            }" \
+            -o /dev/stderr -w "\nHTTP status: %{http_code}\n"
