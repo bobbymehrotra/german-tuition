@@ -267,9 +267,10 @@ body {
 }
 
 .about-text p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    margin-bottom: 0.85rem;
     color: #6b7280;
+    line-height: 1.7;
 }
 
 .credentials {
