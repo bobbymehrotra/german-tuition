@@ -117,8 +117,8 @@
         }
         .credentials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
             margin: 32px 0 40px;
         }
         .credential-card {
@@ -184,9 +184,13 @@
             display: inline-block;
         }
         .about-cta a.btn-primary:hover { background: #e8eeff; }
+        @media (max-width: 700px) {
+            .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 600px) {
             .about-hero h1 { font-size: 1.8rem; }
             .about-body { padding: 40px 16px 60px; }
+            .credentials-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
